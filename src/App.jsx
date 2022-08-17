@@ -4,7 +4,7 @@ import { getDistance } from 'geolib';
 
 import useViewport from './hooks/useViewport'
 import DesktopComponent from './components/DesktopComponent'
-import {Box, Container, Grid, FormGroup, FormControlLabel, Switch, Alert, Typography} from "@mui/material";
+import {Box, Container, Grid, FormGroup, FormControlLabel, Switch, Alert} from "@mui/material";
 import LandingPage from "./pages/LandingPage";
 import HomePage from "./pages/HomePage"
 import {guests} from "./guests"
