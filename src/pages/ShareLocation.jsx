@@ -19,13 +19,11 @@ const ShareLocation = ({name, state, setState, isGeolocationAvailable ,getPositi
             <Grid item width={"100%"}>
                 <Box width={"100%"}>
                     <Typography textAlign={"left"} variant={"body1"}>Please share your
-                        location.
+                        location. This way the app can know if you are in suffolk or not
                     </Typography>
                     <br/>
                     <Typography textAlign={"left"} variant={"body1"}>
-                        Don't worry you can
-                        trust me,<br/>
-                        I am a website
+                        Don't worry, I am not tracking you, your location is only used when you have this page open
                     </Typography>
                     <br/>
                     <Typography textAlign={"left"} variant={"body1"}>
