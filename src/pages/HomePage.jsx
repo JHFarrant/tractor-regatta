@@ -1,43 +1,48 @@
-import React, {useState, useEffect} from "react";
-import {Grid, Typography, Box, Button, Rating} from "@mui/material";
-import logo from '../static/logo.png'
+import React from "react";
+import {
+    Grid,
+    Typography,
+    Box,
+    Button,
+    Rating,
+    ListItem,
+    ListItemAvatar,
+    Avatar,
+    ListItemText,
+    List
+} from "@mui/material";
 import useFade from "../hooks/useFade";
+import {Person, Star,} from "@mui/icons-material";
 
-const HomePage = ({guest, state, isCheckedIn, setState}) => {
-    const [isCheckInVisible, setCheckInVisible, fadeCheckInProps] = useFade(!isCheckedIn);
-    const [isHomeVisible, setHomeVisible, fadeHomeProps] = useFade(isCheckedIn);
-
-    // const speed = 3
-    // const loading = state == "initialLoad"
-    // const [loadingTextID, setTextID] = useState(0)
-    // const loadingTexts = [
-    //     "Loading, please wait...",
-    //     "Analysing turf...",
-    //     "Retrofitting blades...",
-    //     "Refuelling engine...",
-    //     "Emptying grass cuttings..."
-    // ]
-    // const loadingText = loadingTexts[loadingTextID]
-
-    //
-    // useEffect(() => {
-    //     const intervalID = setInterval(() =>  {
-    //         if (loadingTextID == loadingTexts.length) {
-    //             setState("loaded")
-    //             clearInterval(intervalID);
-    //         }else {
-    //             setTextID((loadingTextID) => loadingTextID + 1)
-    //         }
-    //     }, 1000);
-    //
-    //     return () => clearInterval(intervalID);
-    // }, []);
+const HomePage = ({guest, isCheckedIn, setState}) => {
+    const [isCheckInVisible, fadeCheckInProps] = useFade(!isCheckedIn);
+    const [isHomeVisible, fadeHomeProps] = useFade(isCheckedIn);
 
     return (
         <>
             {isHomeVisible && <Grid item justifySelf={"start"}>
-            <Typography component="legend">Tractor driver rating</Typography>
-            <Rating name="customized-10" defaultValue={guest.selfRating} max={10} />
+                <List dense={true}>
+                    <ListItem >
+                        <ListItemAvatar>
+                            <Avatar>
+                                <Person />
+                            </Avatar>
+                        </ListItemAvatar>
+                        <ListItemText primary={guest.name}/>
+                    </ListItem>
+                    <ListItem >
+                        <ListItemAvatar>
+                            <Avatar>
+                                <Star />
+                            </Avatar>
+                        </ListItemAvatar>
+                        <ListItemText primary={"Tractor driver rating"} secondary={<Rating name="customized-10" readOnly defaultValue={guest?.selfRating} max={10}/>
+                        }/>
+                    </ListItem>
+                </List>
+            </Grid>}
+            {isHomeVisible && <Grid item justifySelf={"start"}>
+            <Typography component="legend"></Typography>
             </Grid>}
 
             {isCheckInVisible && <Grid item>
