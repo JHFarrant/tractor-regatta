@@ -87,27 +87,13 @@ function App() {
                 pt={3}
                 pb={3}
           >
-              <Grid item  width={"100%"}>
-                  <Grid container
-                        direction={"row"}
-                        justifyContent="space-between"
-                        alignItems="center"
-                        width={"100%"}
-                        wrap={"nowrap"}
-                  >
-                      <Grid item xs={6}>
-                          <Box>
-                              <Typography color={"green"} variant={"h3"}>TR22</Typography>
-                          </Box>
-                      </Grid>
-                      <Grid item xs={6}>
-                          <Box >
-                              <img
-                                  style={state === "initialLoad" ? {animation: `spin ${speed}s linear infinite`} : {"max-width":"100%"}}
-                                  src={logo} alt="Logo" />
-                          </Box>
-                      </Grid>
-                  </Grid>
+              <Grid item>
+                  <Box pr={3} pl={"70%"}>
+                      <img
+                          width={"100%"}
+                          style={state === "initialLoad" ? {animation: `spin ${speed}s linear infinite`} : {}}
+                          src={logo} alt="Logo" />
+                  </Box>
                   {
                       ["home"].includes(state) && isCheckedIn &&
                       <>
