@@ -88,7 +88,7 @@ const CheckIn = ({guest, state, setState, setCheckInID, setID}) => {
     return (
         <>
                 <Grid item>
-                    <form data-netlify="true" id="form1" netlify-honeypot="bot-field" onSubmit={done}>
+                    <form  id="checkin" name="checkin" onSubmit={done}>
                     <Box>
                         <FormControl sx={{
                             '& .MuiTextField-root': { m: 1, width: '30ch' },
@@ -156,7 +156,7 @@ const CheckIn = ({guest, state, setState, setCheckInID, setID}) => {
         </Grid>
         <Grid item>
             <Box pt={10}>
-                <Button type="submit" form="form1" size={"large"} color={"success"} variant="outlined" >Confirm Check In</Button>
+                <Button type="submit" form="checkin" size={"large"} color={"success"} variant="outlined" >Confirm Check In</Button>
             </Box>
         </Grid>
 </>

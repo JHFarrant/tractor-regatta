@@ -4,7 +4,7 @@ import { getDistance } from 'geolib';
 
 import useViewport from './hooks/useViewport'
 import DesktopComponent from './components/DesktopComponent'
-import {Box, Container, Grid, FormGroup, FormControlLabel, Switch, Alert} from "@mui/material";
+import {Box, Container, Grid, FormGroup, FormControlLabel, Switch, Alert, Typography} from "@mui/material";
 import LandingPage from "./pages/LandingPage";
 import HomePage from "./pages/HomePage"
 import {guests} from "./guests"
@@ -17,7 +17,7 @@ import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import ShareLocation from "./pages/ShareLocation";
 import OutsideSuffolk from "./pages/OutsideSuffolk";
-
+import FakeForm from "./pages/FakeForm"
 
 const slideLocation = { latitude: 51.988067740424825, longitude: 0.7921858396712386 }
 const twentyNM = 37040
@@ -51,7 +51,7 @@ function App() {
     useEffect(() => {
         if(coords && timestamp > mostRecentCoordsAndTime.timestamp) setMostRecentCoordsAndTime({coords, timestamp})
     }, [coords, timestamp, mostRecentCoordsAndTime, mostRecentCoordsAndTime.timestamp]);
-    
+
     const { width } = useViewport();
     const breakpoint = 620;
     const guest = { ...guests[id], id:id}
@@ -88,13 +88,27 @@ function App() {
                 pt={3}
                 pb={3}
           >
-              <Grid item>
-                  <Box pr={3} pl={"70%"}>
-                      <img
-                          width={"100%"}
-                          style={state === "initialLoad" ? {animation: `spin ${speed}s linear infinite`} : {}}
-                          src={logo} alt="Logo" />
-                  </Box>
+              <Grid item  width={"100%"}>
+                  <Grid container
+                        direction={"row"}
+                        justifyContent="space-between"
+                        alignItems="center"
+                        width={"100%"}
+                        wrap={"nowrap"}
+                  >
+                      <Grid item xs={6}>
+                          <Box>
+                              <Typography color={"green"} variant={"h3"}>TR22</Typography>
+                          </Box>
+                      </Grid>
+                      <Grid item xs={6}>
+                          <Box >
+                              <img
+                                  style={state === "initialLoad" ? {animation: `spin ${speed}s linear infinite`} : {"max-width":"100%"}}
+                                  src={logo} alt="Logo" />
+                          </Box>
+                      </Grid>
+                  </Grid>
                   {
                       ["home"].includes(state) && isCheckedIn &&
                       <>
@@ -123,6 +137,7 @@ function App() {
               </Grid>}
           </Grid>
           </Container>
+            <FakeForm></FakeForm>
         </LocalizationProvider>
     );
 }
