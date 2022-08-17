@@ -1,14 +1,12 @@
-import React, {useState, useEffect, useRef} from "react";
+import React, {useState} from "react";
 import {Grid, Typography, Box, Button} from "@mui/material";
 import useFade from "../hooks/useFade"
 
-import logo from '../static/logo.png'
 
 const LandingPage = ({name, state, setState}) => {
 
     const [isVisible, setVisible, fadeProps] = useFade(true);
 
-    const loading = state == "initialLoad"
     const [loadingTextID, setTextID] = useState(0)
     const loadingTexts = [
         "",

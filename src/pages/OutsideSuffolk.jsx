@@ -1,7 +1,6 @@
-import React, {useState, useEffect} from "react";
-import {Grid, Typography, Box, Button, Modal, Link} from "@mui/material";
+import React, {useState} from "react";
+import {Grid, Typography, Box, Modal, Link} from "@mui/material";
 import slide from '../static/slide.png'
-import useFade from "../hooks/useFade";
 
 const modalStyle = {
     position: 'absolute',
@@ -16,7 +15,6 @@ const modalStyle = {
 };
 
 const OutsideSuffolk = ({name, state, setState}) => {
-    const [isVisible, setVisible, fadeProps] = useFade(true);
 
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);

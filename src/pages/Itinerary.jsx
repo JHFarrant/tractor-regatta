@@ -23,7 +23,7 @@ import {
 } from "@mui/icons-material";
 
 const Itinerary = ({guest, state, setState}) => {
-    const [isVisible, setVisible, fadeProps] = useFade(true);
+    const [isVisible, fadeProps] = useFade(true);
 
     // const speed = 3
     // const loading = state == "initialLoad"

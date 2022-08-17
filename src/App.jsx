@@ -38,7 +38,7 @@ function App() {
     const isCheckedIn = checkInID === id
     // const [previouslyEnabledLocation, setPreviouslyEnabledLocation] = useLocalStorage('sharedLocation', false)
 
-    const { coords, timestamp, isGeolocationAvailable, isGeolocationEnabled, getPosition} = useGeolocated({
+    const { coords, timestamp, isGeolocationAvailable, getPosition} = useGeolocated({
             positionOptions: {
                 enableHighAccuracy: false,
             },
@@ -49,14 +49,9 @@ function App() {
         });
 
     useEffect(() => {
-        console.log("inCords", coords)
-        console.log("inMost Recent Coords", mostRecentCoords)
         if(coords && timestamp > mostRecentCoordsAndTime.timestamp) setMostRecentCoordsAndTime({coords, timestamp})
-    }, [coords, timestamp]);
-
-
-    console.log("Cords", coords)
-    console.log("Most Recent Coords", mostRecentCoords)
+    }, [coords, timestamp, mostRecentCoordsAndTime, mostRecentCoordsAndTime.timestamp]);
+    
     const { width } = useViewport();
     const breakpoint = 620;
     const guest = { ...guests[id], id:id}
