@@ -17,7 +17,6 @@ import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import ShareLocation from "./pages/ShareLocation";
 import OutsideSuffolk from "./pages/OutsideSuffolk";
-import FakeForm from "./pages/FakeForm"
 
 const slideLocation = { latitude: 51.988067740424825, longitude: 0.7921858396712386 }
 const twentyNM = 37040
@@ -137,7 +136,6 @@ function App() {
               </Grid>}
           </Grid>
           </Container>
-            <FakeForm></FakeForm>
         </LocalizationProvider>
     );
 }
