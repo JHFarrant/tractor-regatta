@@ -71,7 +71,13 @@ const OutsideSuffolk = ({name, state, setState}) => {
                             onClick={() => setState("itinerary")}                        >
                             Click here for a sneak peak at the itinerary
                         </Link>
-
+                        <br/>
+                        <Link
+                            component="button"
+                            variant="body2"
+                            onClick={() => setState("checkIn")}                        >
+                            Made a mistake? Check in again
+                        </Link>
                     </Box>
                     <Modal
                         open={open}

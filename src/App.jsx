@@ -33,8 +33,13 @@ function App() {
     const [glutenMode, setGlutenMode] = useState(false)
     const [mostRecentCoordsAndTime, setMostRecentCoordsAndTime] = useState({coords:undefined, timestamp: new Date()})
     const mostRecentCoords = mostRecentCoordsAndTime.coords
-    const [state, setState] = useLocalStorage("state","landing")
-
+    const [state, _setState] = useLocalStorage("state","landing")
+    const setState = (s) => {
+        if (s === "checkIn"){
+            setCheckInID(false)
+        }
+        _setState(s)
+    }
     const [checkInID, setCheckInID] = useLocalStorage('checkInID', false)
     const isCheckedIn = checkInID === id
     // const [previouslyEnabledLocation, setPreviouslyEnabledLocation] = useLocalStorage('sharedLocation', false)
