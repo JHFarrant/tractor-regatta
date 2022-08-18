@@ -32,11 +32,6 @@ const ShareLocation = ({name, state, setState, isGeolocationAvailable ,getPositi
                     <Button size={"large"} color={"success"} variant="outlined" onClick={() => getPosition()}>Allow Location</Button>
                 </Box>
             </Grid>
-            {/*<Grid item>*/}
-            {/*    <Box pt={10}>*/}
-            {/*        <Button size={"large"} color={"success"} variant="outlined" onClick={done}>Great thanks</Button>*/}
-            {/*    </Box>*/}
-            {/*</Grid>*/}
     </>
     );
 }

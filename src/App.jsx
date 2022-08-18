@@ -31,7 +31,7 @@ function App() {
 
 
     const [glutenMode, setGlutenMode] = useState(false)
-    const [mostRecentCoordsAndTime, setMostRecentCoordsAndTime] = useState({coords:undefined, timestamp: new Date()})
+    const [mostRecentCoordsAndTime, setMostRecentCoordsAndTime] = useState({coords:undefined, timestamp: new Date().getTime()})
     const mostRecentCoords = mostRecentCoordsAndTime.coords
     const [state, _setState] = useLocalStorage("state","landing")
     const setState = (s) => {
@@ -55,7 +55,7 @@ function App() {
         });
 
     useEffect(() => {
-        if(coords && timestamp > mostRecentCoordsAndTime.timestamp) setMostRecentCoordsAndTime({coords, timestamp})
+        if(coords && (!mostRecentCoordsAndTime.coords || timestamp > mostRecentCoordsAndTime.timestamp)) setMostRecentCoordsAndTime({coords, timestamp})
     }, [coords, timestamp, mostRecentCoordsAndTime, mostRecentCoordsAndTime.timestamp]);
 
     const { width } = useViewport();

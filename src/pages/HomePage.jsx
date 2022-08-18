@@ -15,6 +15,7 @@ import useFade from "../hooks/useFade";
 import {CurrencyBitcoin, Star,} from "@mui/icons-material";
 
 const defaultAvatarURL = "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
+const menuLink = "https://docs.google.com/document/d/190nX3k5T9NVgX0UsFVatO8SiSp3Sv63AzC9WG21Swkc/export?format=pdf"
 
 const HomePage = ({guest, isCheckedIn, setState}) => {
     const [isCheckInVisible, fadeCheckInProps] = useFade(!isCheckedIn);
@@ -89,7 +90,10 @@ const HomePage = ({guest, isCheckedIn, setState}) => {
             <Box pt={2}>
                 <Button {...fadeHomeProps} size={"large"} color={"success"} variant="outlined" onClick={() => setState("leaderboard")}>Leaderboard</Button>
             </Box>}
-
+             {isHomeVisible &&
+             <Box pt={2}>
+                 <Button {...fadeHomeProps} size={"large"} color={"success"} variant="outlined" href={menuLink}>Menu</Button>
+             </Box>}
             </Grid>
 
     </>
