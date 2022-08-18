@@ -1,17 +1,8 @@
-import React, { useEffect} from "react";
-import {Grid, Typography, Box} from "@mui/material";
+import React from "react";
+import {Grid, Typography, Box, Button} from "@mui/material";
 
 
 const ShareLocation = ({name, state, setState, isGeolocationAvailable ,getPosition, coords}) => {
-
-
-    useEffect(() => {
-        const timeoutID = setInterval(() =>  {
-            if (!coords) getPosition()
-        }, 500);
-
-        return () => clearInterval(timeoutID);
-    });
 
 
     return (
@@ -34,6 +25,11 @@ const ShareLocation = ({name, state, setState, isGeolocationAvailable ,getPositi
                     </Typography>
 
 
+                </Box>
+            </Grid>
+            <Grid item>
+                <Box pt={10}>
+                    <Button size={"large"} color={"success"} variant="outlined" onClick={() => getPosition()}>Allow Location</Button>
                 </Box>
             </Grid>
             {/*<Grid item>*/}

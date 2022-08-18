@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import {
     Grid,
     Typography,
@@ -12,11 +12,27 @@ import {
     List
 } from "@mui/material";
 import useFade from "../hooks/useFade";
-import {Person, Star,} from "@mui/icons-material";
+import {CurrencyBitcoin, Star,} from "@mui/icons-material";
+
+const defaultAvatarURL = "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
 
 const HomePage = ({guest, isCheckedIn, setState}) => {
     const [isCheckInVisible, fadeCheckInProps] = useFade(!isCheckedIn);
     const [isHomeVisible, fadeHomeProps] = useFade(isCheckedIn);
+
+    const [guestTractorCoins, setGuestTractorCoins] = useState("-");
+
+    const fetchCoins = () => {
+        fetch(`https://keyvalue.immanuel.co/api/KeyVal/GetValue/cx791p68/${guest.id}`, { method: 'GET'})
+            .then(response => {
+                return response.json()
+            })
+            .then(data => setGuestTractorCoins(Number(data)));
+    }
+
+    useEffect(() => {
+        fetchCoins()
+    });
 
     return (
         <>
@@ -25,7 +41,7 @@ const HomePage = ({guest, isCheckedIn, setState}) => {
                     <ListItem >
                         <ListItemAvatar>
                             <Avatar>
-                                <Person />
+                                <Avatar alt="ProfilePic" src={guest?.avatarURL || defaultAvatarURL}/>
                             </Avatar>
                         </ListItemAvatar>
                         <ListItemText primary={guest.name}/>
@@ -36,8 +52,15 @@ const HomePage = ({guest, isCheckedIn, setState}) => {
                                 <Star />
                             </Avatar>
                         </ListItemAvatar>
-                        <ListItemText primary={"Tractor driver rating"} secondary={<Rating name="customized-10" readOnly defaultValue={guest?.selfRating} max={10}/>
-                        }/>
+                        <ListItemText primary={"Tractor driver rating"} secondary={<Rating name="customized-10" readOnly defaultValue={guest?.selfRating} max={10}/>}/>
+                    </ListItem>
+                    <ListItem >
+                        <ListItemAvatar>
+                            <Avatar>
+                                <CurrencyBitcoin />
+                            </Avatar>
+                        </ListItemAvatar>
+                        <ListItemText primary={"Tractor coins"} secondary={guestTractorCoins} max={10}/>
                     </ListItem>
                 </List>
             </Grid>}
@@ -45,20 +68,30 @@ const HomePage = ({guest, isCheckedIn, setState}) => {
             <Typography component="legend"></Typography>
             </Grid>}
 
-            {isCheckInVisible && <Grid item>
+             <Grid item textAlign={"center"}>
 
-            <Box pt={10}>
+                 {isCheckInVisible && <Box pt={10}>
                 <Button {...fadeCheckInProps} size={"large"} color={"success"} variant="outlined" onClick={() => setState("checkIn")}>Check In</Button>
-            </Box>
-        </Grid>
+                </Box>
             }
-            {isHomeVisible && <Grid item>
+            {isHomeVisible &&
+                <Box pt={2}>
+                    <Button {...fadeHomeProps} size={"large"} color={"success"} variant="outlined" onClick={() => setState("rules")}>Rules</Button>
+                </Box>
+            }
+            {isHomeVisible &&
 
-                <Box pt={10}>
+                <Box pt={2}>
                     <Button {...fadeHomeProps} size={"large"} color={"success"} variant="outlined" onClick={() => setState("itinerary")}>Itinerary</Button>
                 </Box>
-            </Grid>
             }
+            {isHomeVisible &&
+            <Box pt={2}>
+                <Button {...fadeHomeProps} size={"large"} color={"success"} variant="outlined" onClick={() => setState("leaderboard")}>Leaderboard</Button>
+            </Box>}
+
+            </Grid>
+
     </>
     );
 }

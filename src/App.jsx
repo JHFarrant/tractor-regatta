@@ -17,6 +17,8 @@ import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import ShareLocation from "./pages/ShareLocation";
 import OutsideSuffolk from "./pages/OutsideSuffolk";
+import Rules from "./pages/Rules";
+import LeaderBoard from "./pages/LeaderBoard"
 
 const slideLocation = { latitude: 51.988067740424825, longitude: 0.7921858396712386 }
 const twentyNM = 37040
@@ -111,6 +113,9 @@ function App() {
           )}
               {["itinerary"].includes(state) &&  <Itinerary name={guest?.name} state={state} setState={setState}></Itinerary> }
           {["checkIn"].includes(state) &&  <CheckIn guest={guest} state={state} setState={setState} setCheckInID={setCheckInID} setID={setID}></CheckIn> }
+              {["rules"].includes(state) &&  <Rules name={guest?.name} state={state} setState={setState}></Rules> }
+              {["leaderboard"].includes(state) &&  <LeaderBoard guest={guest} state={state} guests={guests}  setState={setState}></LeaderBoard> }
+
               { state === "home" && <Grid item justifySelf={"end"}>
                   <Box>
                       <FormGroup>

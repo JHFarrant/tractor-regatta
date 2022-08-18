@@ -274,7 +274,7 @@ const Itinerary = ({guest, state, setState}) => {
                 </Box>
             </Grid> }
              { isVisible &&    <Grid item {...fadeProps}>
-                <Box pt={10}>
+                <Box pt={10} pb={2}>
                 <Button size={"large"} color={"success"} variant="outlined" onClick={done}>Back</Button>
                 </Box>
                 </Grid>}
